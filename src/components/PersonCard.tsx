@@ -1,15 +1,22 @@
 import { ThumbsUp, ThumbsDown, X, MapPin } from "lucide-react";
-import type { Person } from "@/data/people";
 
 interface PersonCardProps {
-  person: Person;
+  person: {
+    id: string;
+    name: string;
+    gender: string;
+    area: string;
+    quote: string;
+    realVotes: number;
+    fakeVotes: number;
+  };
   onClose: () => void;
   onVote: (id: string, type: "real" | "fake") => void;
 }
 
 export default function PersonCard({ person, onClose, onVote }: PersonCardProps) {
   return (
-    <div className="animate-slide-up fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-[90vw] max-w-md">
+    <div className="animate-slide-up fixed bottom-4 left-1/2 -translate-x-1/2 z-[1100] w-[90vw] max-w-md">
       <div className="bg-card rounded-2xl shadow-2xl border border-border overflow-hidden">
         {/* Header */}
         <div
