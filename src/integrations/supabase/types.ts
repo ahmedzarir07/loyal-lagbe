@@ -26,6 +26,7 @@ export type Database = {
           name: string
           quote: string
           real_votes: number
+          social_media_link: string | null
         }
         Insert: {
           area: string
@@ -38,6 +39,7 @@ export type Database = {
           name: string
           quote: string
           real_votes?: number
+          social_media_link?: string | null
         }
         Update: {
           area?: string
@@ -50,6 +52,7 @@ export type Database = {
           name?: string
           quote?: string
           real_votes?: number
+          social_media_link?: string | null
         }
         Relationships: []
       }
