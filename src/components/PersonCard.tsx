@@ -1,4 +1,4 @@
-import { ThumbsUp, ThumbsDown, X, MapPin } from "lucide-react";
+import { ThumbsUp, ThumbsDown, X, MapPin, ExternalLink } from "lucide-react";
 
 interface PersonCardProps {
   person: {
@@ -9,6 +9,7 @@ interface PersonCardProps {
     quote: string;
     realVotes: number;
     fakeVotes: number;
+    social_media_link?: string;
   };
   onClose: () => void;
   onVote: (id: string, type: "real" | "fake") => void;
@@ -32,7 +33,7 @@ export default function PersonCard({ person, onClose, onVote }: PersonCardProps)
               {person.name}
             </h3>
             <p className="text-sm opacity-90 flex items-center gap-1">
-              <MapPin className="w-3 h-3" /> {person.area}, Dhaka
+              <MapPin className="w-3 h-3" /> {person.area}
             </p>
           </div>
           <button
@@ -46,6 +47,17 @@ export default function PersonCard({ person, onClose, onVote }: PersonCardProps)
         {/* Body */}
         <div className="p-4 space-y-3">
           <p className="text-center text-lg italic text-muted-foreground">"{person.quote}"</p>
+
+          {person.social_media_link && (
+            <a
+              href={person.social_media_link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 text-sm text-primary hover:underline"
+            >
+              <ExternalLink className="w-4 h-4" /> Social Media Profile
+            </a>
+          )}
 
           <div className="flex justify-center gap-2 text-sm text-muted-foreground">
             <span>👍 {person.realVotes} say Real</span>
